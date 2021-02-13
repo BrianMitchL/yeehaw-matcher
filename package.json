@@ -2,15 +2,24 @@
   "name": "yeehaw-matcher",
   "version": "1.0.0",
   "description": "Test that a string contains permutations of a yeehaw.",
-  "main": "dist/index.ts",
+  "homepage": "https://github.com/BrianMitchL/yeehaw-matcher",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BrianMitchL/yeehaw-matcher.git"
+  },
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "test": "jest",
     "prebuild": "rimraf dist",
     "build": "tsc"
   },
   "keywords": [
-    "yeehaw", "regexp"
+    "yeehaw",
+    "regexp"
   ],
   "author": "Brian Mitchell",
   "license": "ISC",
