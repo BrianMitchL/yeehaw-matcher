@@ -1,0 +1,28 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  build:
+    name: Build and test on Node ${{ matrix.node }}
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node: ['12.x', '14.x']
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Use Node ${{ matrix.node }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Install deps and build (with cache)
+        uses: bahmutov/npm-install@v1
+
+      - name: Test
+        run: npm run test -- --ci --coverage
+
+      - name: Build
+        run: npm run build
