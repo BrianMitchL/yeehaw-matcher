@@ -7,7 +7,7 @@ This module exports a named RegExp, `yeehaw`. A string will match a "yeehaw" if 
 ## Example
 
 ```javascript
-import { yeehaw } from 'yeehaw-matcher';
+const { yeehaw } = require('yeehaw-matcher');
 
 yeehaw.test('yeehaw'); // true
 yeehaw.test('yee haw'); // true
