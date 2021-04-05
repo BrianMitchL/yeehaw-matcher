@@ -1,6 +1,6 @@
 {
   "name": "yeehaw-matcher",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Test that a string contains permutations of a yeehaw.",
   "homepage": "https://github.com/BrianMitchL/yeehaw-matcher",
   "repository": {
