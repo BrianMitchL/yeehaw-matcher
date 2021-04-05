@@ -22,7 +22,7 @@ jobs:
         uses: bahmutov/npm-install@v1
 
       - name: Test
-        run: npm run test -- --ci --coverage
+        run: npm run test -- --ci --coverage --watchAll=false
 
       - name: Build
         run: npm run build
