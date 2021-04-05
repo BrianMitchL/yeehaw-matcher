@@ -13,9 +13,11 @@
     "dist"
   ],
   "scripts": {
-    "test": "jest",
+    "test": "jest --watch",
     "prebuild": "rimraf dist",
-    "build": "tsc"
+    "build": "tsc",
+    "prepare": "husky install",
+    "prettier": "pretty-quick --staged"
   },
   "keywords": [
     "yeehaw",
@@ -25,19 +27,14 @@
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {
-    "@types/jest": "^26.0.20",
-    "husky": "^5.0.9",
+    "@types/jest": "^26.0.22",
+    "husky": "^6.0.0",
     "jest": "^26.6.3",
     "prettier": "^2.2.1",
     "pretty-quick": "^3.1.0",
     "rimraf": "^3.0.2",
-    "ts-jest": "^26.5.1",
-    "typescript": "^4.1.5"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
+    "ts-jest": "^26.5.4",
+    "typescript": "^4.2.3"
   },
   "prettier": {
     "singleQuote": true
