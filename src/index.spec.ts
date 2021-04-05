@@ -1,6 +1,6 @@
-import { yeehaw } from './index';
+import { yeehaw, yeehawAll } from './index';
 
-describe('test matches', () => {
+describe('valid strings', () => {
   it.each([
     'yeehaw',
     'heeyaw',
@@ -33,15 +33,17 @@ describe('test matches', () => {
     'YEE HAW',
     'can I get a YEEEEHAWWWW!?',
     'yee-haw',
-    'yet however this actually matches, maybe that is okay?',
     'yeeeeeeee hawwwwwwww',
-    'heeeeaaaaaa yeeeeeeeeeow',
-  ])('%s', (str) => {
+    'haw hee',
+    'haaaaaaaaaw yee',
+    'hah hah',
+    'hee hee',
+  ])('"%s" matches', (str) => {
     expect(yeehaw.test(str)).toBe(true);
   });
 });
 
-describe('test does not match', () => {
+describe('invalid strings', () => {
   it.each([
     'yee',
     'haw',
@@ -57,62 +59,44 @@ describe('test does not match', () => {
     'ye haw',
     'yee flippin haw',
     'lots of yee words and haws mixed throughout yeeeee but never enough haws',
-  ])('%s', (str) => {
+    'have heard',
+    'yet however',
+    'you hooligan',
+    'yesterday hotdish',
+    'hahahaha',
+    'hahahah',
+    'hahaha',
+    'hahah',
+    'haha',
+    'yon hurl',
+    'yall hollow',
+    'you hisadone',
+    'yoway hinger',
+    'yedhed',
+    'heeeeaaaaaa yeeeeeeeeeow',
+    'yee hawh',
+    'yee hahw',
+  ])('"%s" does not match', (str) => {
     expect(yeehaw.test(str)).toBe(false);
   });
 });
 
 describe('exec matches', () => {
-  it.each([
-    'yeehaw',
-    'heeyaw',
-    'yeeyaw',
-    'yeeyee',
-    'hawhaw',
-    'yahyah',
-    'hawyee',
-    'yawhee',
-    'heehaw',
-    'yee haw',
-    'hee yaw',
-    'yee yaw',
-    'yee yee',
-    'haw haw',
-    'yah yah',
-    'haw yee',
-    'yaw hee',
-    'hee haw',
-    'yee.haw',
-    'hee.yaw',
-    'yee.yaw',
-    'yee.yee',
-    'haw.haw',
-    'yah.yah',
-    'haw.yee',
-    'yaw.hee',
-    'hee.haw',
-    'YEEHAW',
-    'YEE HAW',
-    'yee-haw',
-    'yeeeeeeee hawwwwwwww',
-    'heeeeaaaaaa yeeeeeeeeeow',
-  ])('%s', (str) => {
-    expect(yeehaw.exec(str)![0]).toBe(str);
+  it('only matches once per string', () => {
+    expect(yeehaw.exec('yee haw yee haw yee haw yee haw')).toHaveLength(1);
   });
 
-  it('can I get a YEEEEHAWWWW!?', () => {
-    expect(yeehaw.exec('can I get a YEEEEHAWWWW!?')![0]).toBe('YEEEEHAWWWW');
-  });
-
-  it('yee haw hee haw yeeee hoi', () => {
-    const str = 'yee haw hee haw yeeee hoi';
-    expect(yeehaw.exec(str)).toHaveLength(1);
+  it("in the middle of a sentence it's time for some yee haw hee haw yeeee hoi", () => {
+    const str =
+      "in the middle of a sentence it's time for some yee haw hee haw yeeee hoi";
     expect(yeehaw.exec(str)![0]).toBe('yee haw');
   });
+});
 
-  it('yet however this actually matches, maybe that is okay?', () => {
-    expect(
-      yeehaw.exec('yet however this actually matches, maybe that is okay?')![0]
-    ).toBe('yet however');
-  });
+it('matches all occurrences using yeehawAll', () => {
+  expect(
+    'some text yee haw more text. hEe haW, oh look at that, hee yah!'.match(
+      yeehawAll
+    )
+  ).toEqual(['yee haw', 'hEe haW', 'hee yah']);
 });
